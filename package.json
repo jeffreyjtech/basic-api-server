@@ -8,5 +8,24 @@
     "sequelize-cli": "^6.4.1",
     "sqlite3": "^5.0.2",
     "supertest": "^6.2.2"
-  }
+  },
+  "name": "basic-api-server",
+  "description": "A basic API server for storing information about food. Uses Express and a postgres DB to provide full CRUD capability.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyjtech/basic-api-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyjtech/basic-api-server/issues"
+  },
+  "homepage": "https://github.com/jeffreyjtech/basic-api-server#readme"
 }
