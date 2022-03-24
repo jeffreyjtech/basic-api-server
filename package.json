@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "sequelize": "^6.17.0",
+    "sequelize-cli": "^6.4.1",
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.2.2"
+  },
+  "name": "basic-api-server",
+  "description": "A basic API server for storing information about food. Uses Express and a postgres DB to provide full CRUD capability.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "NODE_ENV=test jest --coverage --verbose",
+    "dev-test": "NODE_ENV=test jest --watchAll --coverage",
+    "db:config": "sequelize init:config",
+    "db:create": "sequelize db:create"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyjtech/basic-api-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyjtech/basic-api-server/issues"
+  },
+  "homepage": "https://github.com/jeffreyjtech/basic-api-server#readme"
+}
