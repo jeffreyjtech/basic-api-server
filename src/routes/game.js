@@ -31,7 +31,6 @@ async function handleGetAllGames (req, res, next) {
 
 async function handleGetGame (req, res, next) {
   try{
-
     let id = parseInt(req.params.id);
 
     let options = {where: {id: id}};
@@ -48,8 +47,59 @@ async function handleGetGame (req, res, next) {
   }
 }
 
+async function handlePutGame (req, res, next) {
+  try{
+    let gameToUpdate = req.body;
+
+    console.log('Data to PUT:', gameToUpdate);
+
+    let id = parseInt(req.params.id);
+
+    let options = {
+      where: {id: id},
+    };
+    
+    console.log('Attempting to update Game with ID:', id);
+
+    await GameModel.update(gameToUpdate, options);
+
+    let responseData = await GameModel.findOne(options);
+    
+    console.log('Game PUT-ed');
+
+    res.status(200).send(responseData);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function handleDeleteGame (req, res, next) {
+  try{
+    let id = parseInt(req.params.id);
+
+    let options = {
+      where: {id: id},
+    };
+    
+    console.log('Attempting to delete Game with ID:', id);
+
+    await GameModel.destroy(options);
+
+    let responseData = {nullContainer: undefined};
+    responseData.nullContainer = await GameModel.findOne(options);
+    
+    console.log('Game deleted\n', responseData);
+
+    res.status(200).send(responseData);
+  } catch (err) {
+    next(err);
+  }
+}
+
 router.post('/game', handlePostGame);
 router.get('/game', handleGetAllGames);
 router.get('/game/:id', handleGetGame);
+router.put('/game/:id', handlePutGame);
+router.delete('/game/:id', handleDeleteGame);
 
 module.exports = router;
