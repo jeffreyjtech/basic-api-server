@@ -5,29 +5,23 @@ const server = require('../src/server.js');
 const { sequelize } = require('../src/models');
 const request = supertest(server.app);
 
-let title = 'Halo 3';
-let genre = 'FPS';
-let releaseYear = 2007;
-
-// let newTitle = 'Halo Three';
-
-let name = 'PS3';
-let manufacturer = 'Sony';
-let gameCount = 0;
-
 // This is a jest function which will run the callback BEFORE doing anything else
 beforeAll(async () => {
   await sequelize.sync();
-  console.log('Synced');
 });
 
 // This is a jest function which will run the callback AFTER doing the other tests
 afterAll(async () => {
-  console.log('Dropped!');
   await sequelize.drop();
 });
 
 describe('Testing the CRUD features of our API for the Game model', () => {
+
+  let title = 'Halo 3';
+  let genre = 'FPS';
+  let releaseYear = 2007;
+
+  let newTitle = 'Halo Three';
   /*{
     title: {
       type: DataTypes.STRING,
@@ -78,12 +72,26 @@ describe('Testing the CRUD features of our API for the Game model', () => {
     expect(response.body.releaseYear).toEqual(releaseYear);
   });
 
-  test('Should update a game', () => {
-    expect(true).toEqual(false);
+  test('Should update a game', async () => {
+    let id = 1;
+
+    let response = await request.put(`/game/${id}`).send({
+      title: newTitle,
+    });
+
+    expect(response.status).toEqual(200);
+    expect(response.body.title).toEqual(newTitle);
+    expect(response.body.genre).toEqual(genre);
+    expect(response.body.releaseYear).toEqual(releaseYear);
   });
 
-  test('Should delete a game', () => {
-    expect(true).toEqual(false);
+  test('Should delete a game', async () => {
+    let id = 1;
+
+    let response = await request.delete(`/game/${id}`);
+
+    expect(response.status).toEqual(200);
+    expect(response.body.nullContainer).toEqual(null);
   });
 });
 
@@ -102,6 +110,12 @@ describe('Testing the CRUD features of our API for the platform model', () => {
       allowNull: true,
     },
   }*/
+  
+  let name = 'PS3';
+  let manufacturer = 'Sony';
+  let gameCount = 0;
+
+  let newGameCount = 1;
 
   test('Should create a platform', async () => {
     let response = await request.post('/platform').send({
@@ -137,10 +151,24 @@ describe('Testing the CRUD features of our API for the platform model', () => {
   });
 
   test('Should update a platform', async () => {
-    await expect(true).toEqual(false);
+    let id = 1;
+
+    let response = await request.put(`/platform/${id}`).send({
+      gameCount: newGameCount,
+    });
+
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual(name);
+    expect(response.body.manufacturer).toEqual(manufacturer);
+    expect(response.body.gameCount).toEqual(newGameCount);
   });
 
   test('Should delete a platform', async () => {
-    await expect(true).toEqual(false);
+    let id = 1;
+
+    let response = await request.delete(`/platform/${id}`);
+
+    expect(response.status).toEqual(200);
+    expect(response.body.nullContainer).toEqual(null);
   });
 });
