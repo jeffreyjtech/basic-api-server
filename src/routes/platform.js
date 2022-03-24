@@ -86,8 +86,8 @@ async function handleDeletePlatform (req, res, next) {
 
     await PlatformModel.destroy(options);
 
-    let responseData = {nullContainer: undefined};
-    responseData.nullContainer = await PlatformModel.findOne(options);
+    let responseData = {record: undefined};
+    responseData.record = await PlatformModel.findOne(options);
     
     console.log('Platform deleted\n', responseData);
 
@@ -102,6 +102,5 @@ router.get('/platform', handleGetAllPlatforms);
 router.get('/platform/:id', handleGetPlatform);
 router.put('/platform/:id', handlePutPlatform);
 router.delete('/platform/:id', handleDeletePlatform);
-
 
 module.exports = router;

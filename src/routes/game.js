@@ -85,8 +85,8 @@ async function handleDeleteGame (req, res, next) {
 
     await GameModel.destroy(options);
 
-    let responseData = {nullContainer: undefined};
-    responseData.nullContainer = await GameModel.findOne(options);
+    let responseData = {record: undefined};
+    responseData.record = await GameModel.findOne(options);
     
     console.log('Game deleted\n', responseData);
 

@@ -91,7 +91,7 @@ describe('Testing the CRUD features of our API for the Game model', () => {
     let response = await request.delete(`/game/${id}`);
 
     expect(response.status).toEqual(200);
-    expect(response.body.nullContainer).toEqual(null);
+    expect(response.body.record).toEqual(null);
   });
 });
 
@@ -169,6 +169,6 @@ describe('Testing the CRUD features of our API for the platform model', () => {
     let response = await request.delete(`/platform/${id}`);
 
     expect(response.status).toEqual(200);
-    expect(response.body.nullContainer).toEqual(null);
+    expect(response.body.record).toEqual(null);
   });
 });
