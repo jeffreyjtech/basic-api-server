@@ -1,6 +1,6 @@
 # Basic API Server
 
-A basic API server for storing information about food. Uses Express and a postgres DB to provide full CRUD capability.
+A basic API server for storing information about video games and video-gaming platforms. Uses Express and a postgres DB to provide full CRUD capability.
 
 [Deployed API](https://jjtech-basic-api-server.herokuapp.com/)
 
