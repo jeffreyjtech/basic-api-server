@@ -11,6 +11,7 @@ app.use(express.json());
 const logger = require('./middleware/logger');
 const gameRoute = require('./routes/game.js');
 const platformRoute = require('./routes/platform.js');
+const customerRoute = require('./routes/customer.js');
 const handle404 = require('./error-handlers/404');
 const handle500 = require('./error-handlers/500');
 
@@ -23,6 +24,7 @@ app.use(logger);
 // Use route modules
 app.use(gameRoute);
 app.use(platformRoute);
+app.use(customerRoute);
 
 // Use error-handler modules
 app.use(handle404);
