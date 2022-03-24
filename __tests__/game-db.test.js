@@ -17,7 +17,20 @@ afterAll(async () => {
 
 describe('Testing the CRUD features of our API for the Game model', () => {
   test('Should create a game', async () => {
-    await expect(true).toEqual(false);
+    let title = 'Halo 3';
+    let genre = 'FPS';
+    let releaseYear = 2007;
+
+    let response = await request.post('/game').send({
+      title,
+      genre,
+      releaseYear,
+    });
+
+    expect(response.status).toEqual(201);
+    expect(response.body.title).toEqual(title);
+    expect(response.body.genre).toEqual(genre);
+    expect(response.body.releaseYear).toEqual(releaseYear);
   });
 
   test('Should get all games', async () => {
