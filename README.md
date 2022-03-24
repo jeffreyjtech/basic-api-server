@@ -4,7 +4,8 @@ A basic API server for storing information about video games and video-gaming pl
 
 [Deployed API](https://jjtech-basic-api-server.herokuapp.com/)
 
-![UML Diagram](./assets/uml-401-lab-3.jpg)
+UML DIAGRAM WIP
+<!-- ![UML Diagram](./assets/uml-401-lab-3.jpg) -->
 
 ## Installation
 
@@ -23,4 +24,4 @@ After installation, run `npm start`.
 
 ## Features / Routes
 
-WIP in Progress
+WIP in progress
