@@ -1,11 +1,12 @@
 'use strict';
 
 const { Sequelize, DataTypes } = require('sequelize');
+
 const gameSchema = require('./game.schema.js');
 const platformSchema = require('./platform.schema.js');
-
 const orderSchema = require('./order.schema.js');
 const customerSchema = require('./customer.schema.js');
+
 const ICollection = require('./lib/ICollection.js');
 
 const DATABASE_URL = process.env.NODE_ENV === 'test' ?
@@ -24,7 +25,6 @@ const sequelize = new Sequelize(DATABASE_URL,
 
 const GameModel = gameSchema(sequelize, DataTypes);
 const PlatformModel = platformSchema(sequelize, DataTypes);
-
 const CustomerModel = customerSchema(sequelize, DataTypes);
 const OrderModel = orderSchema(sequelize, DataTypes);
 
